@@ -4,7 +4,7 @@
 # that corresponds to the household_power_consumption.txt data file, if not it
 # will download and unzip it. Then it will process the data, placing the objects
 # in the global environment. 
-source("../processData.R")
+source("processData.R")
 
 png(filename="myGraphics/plot1.png")
 hist(data$Global_active_power, col="red", 
