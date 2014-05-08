@@ -1,4 +1,4 @@
-# plot 3
+# Plot 3
 
 # this script will look for a data directory and see if there is a file inside
 # that corresponds to the household_power_consumption.txt data file, if not it
