@@ -1,5 +1,5 @@
 # plot 3
-png(filename="plot3.png")
+png(filename="myGraphics/plot3.png")
 with(data, {
     plot(datetime, Sub_metering_1, type="l", col="black",
          xlab="",ylab="Energy sub metering")
