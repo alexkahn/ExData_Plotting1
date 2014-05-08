@@ -23,16 +23,24 @@ if(!file.exists("./data/household_power_consumption.txt")) {
     unzip("./data/exdata_data_household_power_consumption.zip")
 }
 
+# Read data
 Power <- read.table(data_file, header=TRUE, sep=";", stringsAsFactors=FALSE)
+
+# Combine the Date and Time columns
 datetime_string <- paste(Power$Date, Power$Time, sep=" ")
+
+# Convert to date objects
 datetime <- strptime(datetime_string, format="%d/%m/%Y %T")
 date <- as.Date(datetime)
 
+# Generate an index for where our data of interest lives.
 day1 <- which(date %in% as.Date("2007-02-01", format="%Y-%m-%d"))
 day2 <- which(date %in% as.Date("2007-02-02", format="%Y-%m-%d"))
 dates_index <- c(day1,day2)
 
+# Subset our initial data frame and create a new one with our datetime object.
 Power <- Power[dates_index,]
 data <- data.frame(datetime = datetime[dates_index], Power[,3:9])
 
+# Do some type casting so our data will be numeric.
 data[,2:8]<-sapply(data[,2:8],as.numeric)
